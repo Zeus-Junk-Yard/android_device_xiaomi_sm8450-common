@@ -81,6 +81,9 @@ function blob_fixup() {
         vendor/bin/hw/android.hardware.gnss-aidl-service-qti)
             "${PATCHELF}" --replace-needed "android.hardware.gnss-V1-ndk_platform.so" "android.hardware.gnss-V1-ndk.so" "${2}"
             ;;
+        vendor/bin/hw/android.hardware.security.keymint-service-qti)
+            ${PATCHELF} --add-needed "android.hardware.security.rkp-V3-ndk.so" "${2}"
+            ;;
     esac
 }
 
