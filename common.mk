@@ -50,6 +50,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.common-V2-ndk_platform.vendor \
     android.hardware.gnss-V1-ndk_platform.vendor \
+		android.hardware.graphics.allocator-V1-ndk \
+		android.hardware.graphics.common-V3-ndk \
 		android.hardware.identity-V4-ndk.vendor \
     android.hardware.identity-V3-ndk_platform.vendor \
     android.hardware.keymaster-V3-ndk_platform.vendor \
