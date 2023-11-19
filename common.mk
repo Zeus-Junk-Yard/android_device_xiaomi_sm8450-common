@@ -50,10 +50,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.common-V2-ndk_platform.vendor \
     android.hardware.gnss-V1-ndk_platform.vendor \
+		android.hardware.identity-V4-ndk.vendor \
     android.hardware.identity-V3-ndk_platform.vendor \
     android.hardware.keymaster-V3-ndk_platform.vendor \
     android.hardware.light-V1-ndk_platform.vendor \
     android.hardware.memtrack-V1-ndk_platform.vendor \
+		android.media.audio.common.types-V1-cpp.vendor \
     android.hardware.security.keymint-V1-ndk_platform.vendor \
     android.hardware.security.rkp-V3-ndk.vendor \
     android.hardware.security.secureclock-V1-ndk_platform.vendor \
