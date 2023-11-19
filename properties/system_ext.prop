@@ -4,3 +4,6 @@ persist.vendor.dpm.feature=1
 # Telephony
 ro.telephony.sim_slots.count=2
 telephony.active_modems.max_count=2
+
+# Dex2oat
+dalvik.vm.dex2oat64.enabled=true
