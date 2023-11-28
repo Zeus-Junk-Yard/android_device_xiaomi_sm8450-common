@@ -48,7 +48,7 @@ PRODUCT_PACKAGES += \
 
 # AIDL NDK backend
 PRODUCT_PACKAGES += \
-    android.hardware.common-V2-ndk_platform.vendor \
+    android.hardware.common-V2-ndk.vendor \
     android.hardware.gnss-V1-ndk_platform.vendor \
 		android.hardware.graphics.allocator-V1-ndk \
 		android.hardware.graphics.common-V3-ndk \
@@ -58,10 +58,10 @@ PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk_platform.vendor \
     android.hardware.memtrack-V1-ndk_platform.vendor \
 		android.media.audio.common.types-V1-cpp.vendor \
-    android.hardware.security.keymint-V1-ndk_platform.vendor \
+    android.hardware.security.keymint-V1-ndk.vendor \
     android.hardware.security.rkp-V3-ndk.vendor \
-    android.hardware.security.secureclock-V1-ndk_platform.vendor \
-    android.hardware.security.sharedsecret-V1-ndk_platform.vendor
+		android.hardware.security.secureclock-V1-ndk.vendor \
+    android.hardware.security.sharedsecret-V1-ndk.vendor
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -217,12 +217,12 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.composer@1.0.vendor \
     vendor.qti.hardware.display.composer@2.0.vendor \
     vendor.qti.hardware.display.composer@3.1.vendor \
-    vendor.qti.hardware.display.config-V1-ndk_platform.vendor \
-    vendor.qti.hardware.display.config-V2-ndk_platform.vendor \
-    vendor.qti.hardware.display.config-V3-ndk_platform.vendor \
-    vendor.qti.hardware.display.config-V4-ndk_platform.vendor \
-    vendor.qti.hardware.display.config-V5-ndk_platform.vendor \
-    vendor.qti.hardware.display.config-V6-ndk_platform.vendor \
+		vendor.qti.hardware.display.config-V1-ndk.vendor \
+    vendor.qti.hardware.display.config-V2-ndk.vendor \
+    vendor.qti.hardware.display.config-V3-ndk.vendor \
+    vendor.qti.hardware.display.config-V4-ndk.vendor \
+    vendor.qti.hardware.display.config-V5-ndk.vendor \
+    vendor.qti.hardware.display.config-V6-ndk.vendor \
     vendor.qti.hardware.display.demura@2.0.vendor \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
