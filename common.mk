@@ -272,6 +272,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# Keymint
+PRODUCT_PACKAGES += \
+    android.hardware.security.rkp-V1-ndk.vendor
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor \
