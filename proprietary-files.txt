@@ -1733,7 +1733,7 @@ vendor/etc/init/vendor.qti.psiclient@1.0-service.rc
 vendor/lib/libpsi.so
 vendor/lib64/libpsi.so
 
-# Protobuf
+# XXXX
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so
 vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
 
