@@ -61,6 +61,7 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack-V1-ndk_platform.vendor \
 		android.media.audio.common.types-V1-cpp.vendor \
     android.hardware.security.keymint-V1-ndk.vendor \
+    android.hardware.security.keymint-V2-ndk.vendor \
     android.hardware.security.rkp-V3-ndk.vendor \
 		android.hardware.security.secureclock-V1-ndk.vendor \
     android.hardware.security.sharedsecret-V1-ndk.vendor
@@ -132,6 +133,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+		android.hardware.bluetooth.audio-V2-ndk.vendor \
     android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.audio-impl \
     com.qualcomm.qti.bluetooth_audio@1.0.vendor \
@@ -162,6 +164,9 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Camera
 PRODUCT_PACKAGES += \
+		android.hardware.camera.common-V1-ndk.vendor \
+		android.hardware.camera.device-V1-ndk.vendor \
+		android.hardware.camera.provider-V1-ndk.vendor \
     android.hardware.camera.provider@2.7.vendor \
     camera.device@1.0-impl \
     libcamera2ndk_vendor \
