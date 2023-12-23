@@ -108,7 +108,6 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 TARGET_NEEDS_DTBOIMAGE := true
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -134,6 +133,7 @@ BOARD_KERNEL_CMDLINE := \
     mtdoops.fingerprint=$(LINEAGE_VERSION)
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
+		androidboot.selinux=permissive \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3
 
