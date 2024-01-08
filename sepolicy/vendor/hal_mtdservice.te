@@ -45,6 +45,8 @@ allow hal_mtdservice_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl 
 allow hal_mtdservice_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl open read };
 allow hal_mtdservice_default hal_tidaservice_default:binder transfer;
 allow hal_mtdservice_default hal_secure_element_default:binder transfer;
+allow hal_mtdservice_default file_contexts_file:file { getattr  open  read };
+allow hal_mtdservice_default vendor_persist_data_file:dir { search };
 type_transition hal_mtdservice mnt_vendor_file:dir vendor_persist_drm_file "fdsd";
 init_daemon_domain(hal_mtdservice_default)
 get_prop(hal_mtdservice_default, vendor_system_prop)

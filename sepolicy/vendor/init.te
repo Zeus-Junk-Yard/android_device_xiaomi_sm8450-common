@@ -1,6 +1,13 @@
 allow init ddr_training_exec:file { execute getattr open read };
 allow init slad_exec:file { getattr open read };
 allow init sla_data_file:file rw_file_perms;
+allow init debugfs_tracing_debug:dir { mounton };
+allow init init:capability2 { wake_alarm };
+allow init init:netlink_kobject_uevent_socket { bind  create  getopt  read  setopt };
+allow init proc:file { write };
+allow init system_server:binder { call };
+allow init vendor_sysfs_battery_supply:file { open };
+allow init vendor_sysfs_usb_supply:file { open };
 allow vendor_init vendor_ddr_prop:property_service set;
 set_prop(vendor_init, vendor_fp_prop)
 set_prop(vendor_init, vendor_fp_info_prop)
