@@ -1,0 +1,2 @@
+allow shell proc_tty_drivers:file { read };
+allow shell sysfs_zram:dir { search };
