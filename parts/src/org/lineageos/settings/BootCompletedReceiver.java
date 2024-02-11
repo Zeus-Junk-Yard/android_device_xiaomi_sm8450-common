@@ -23,9 +23,9 @@ import android.content.Intent;
 import android.util.Log;
 
 import org.lineageos.settings.dirac.DiracUtils;
-import org.lineageos.settings.dolby.DolbyUtils;
 import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.thermal.ThermalUtils;
+import org.lineageos.settings.refreshrate.RefreshUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final boolean DEBUG = false;
@@ -33,16 +33,15 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        if (!intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) return;
-        if (DEBUG) Log.d(TAG, "Received boot completed intent");
-
-        // Dolby
-        DolbyUtils.getInstance(context);
-
-        // Doze
+        if (DEBUG)
+            Log.d(TAG, "Received boot completed intent");
+        try {
+            DiracUtils.getInstance(context);
+        } catch (Exception e) {
+            Log.d(TAG, "Dirac is not present in system");
+        }
         DozeUtils.onBootCompleted(context);
-
-        // Thermal Profiles
         ThermalUtils.startService(context);
+        RefreshUtils.startService(context);        
     }
 }

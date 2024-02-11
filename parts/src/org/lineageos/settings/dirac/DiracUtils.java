@@ -92,7 +92,7 @@ public class DiracUtils {
         return PlaybackState.STATE_NONE;
     }
 
-    private void refreshPlaybackIfNecessary() {
+    private void refreshPlaybackIfNecessary(){
         if (mMediaSessionManager == null) return;
 
         final List<MediaController> sessions

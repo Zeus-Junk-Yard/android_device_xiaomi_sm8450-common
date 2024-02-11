@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
- *               2017-2023 The LineageOS Project
+ *               2017-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,6 +92,10 @@ public class DozeSettingsFragment extends PreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (DozeUtils.ALWAYS_ON_DISPLAY.equals(preference.getKey())) {
             DozeUtils.enableAlwaysOn(getActivity(), (Boolean) newValue);
+            if (!(Boolean) newValue) {
+                mDozeBrightnessPreference.setValue(DozeUtils.DOZE_BRIGHTNESS_LBM);
+                DozeUtils.setDozeMode(DozeUtils.DOZE_BRIGHTNESS_LBM);
+            }
             mDozeBrightnessPreference.setEnabled((Boolean) newValue);
         } else if (DozeUtils.DOZE_BRIGHTNESS_KEY.equals(preference.getKey())) {
             if (!DozeUtils.DOZE_BRIGHTNESS_AUTO.equals((String) newValue)) {
@@ -117,26 +121,36 @@ public class DozeSettingsFragment extends PreferenceFragment
         if (!isChecked) {
             DozeUtils.enableAlwaysOn(getActivity(), false);
             mAlwaysOnDisplayPreference.setChecked(false);
+            mDozeBrightnessPreference.setValue(DozeUtils.DOZE_BRIGHTNESS_LBM);
+            DozeUtils.updateDozeBrightnessIcon(getContext(), mDozeBrightnessPreference);
         }
         mAlwaysOnDisplayPreference.setEnabled(isChecked);
         mDozeBrightnessPreference.setEnabled(
                 isChecked && DozeUtils.isAlwaysOnEnabled(getActivity()));
     }
 
+    private static class HelpDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.doze_settings_help_title)
+                    .setMessage(R.string.doze_settings_help_text)
+                    .setNegativeButton(R.string.dialog_ok, (dialog, which) -> dialog.cancel())
+                    .create();
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            getActivity()
+                    .getSharedPreferences("doze_settings", Activity.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("first_help_shown", true)
+                    .commit();
+        }
+    }
+
     private void showHelp() {
-        AlertDialog helpDialog = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.doze_settings_help_title)
-                .setMessage(R.string.doze_settings_help_text)
-                .setPositiveButton(R.string.dialog_ok,
-                        (dialog, which) -> {
-                            getActivity()
-                                    .getSharedPreferences("doze_settings", Activity.MODE_PRIVATE)
-                                    .edit()
-                                    .putBoolean("first_help_shown", true)
-                                    .commit();
-                            dialog.cancel();
-                        })
-                .create();
-        helpDialog.show();
+        HelpDialogFragment fragment = new HelpDialogFragment();
+        fragment.show(getFragmentManager(), "help_dialog");
     }
 }

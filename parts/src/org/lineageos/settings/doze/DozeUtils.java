@@ -30,7 +30,6 @@ import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
@@ -47,7 +46,6 @@ public final class DozeUtils {
     protected static final String DOZE_ENABLE = "doze_enable";
     protected static final String ALWAYS_ON_DISPLAY = "always_on_display";
     protected static final String DOZE_BRIGHTNESS_KEY = "doze_brightness";
-    protected static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
     protected static final String DOZE_MODE_PATH =
             "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/doze_mode";
@@ -61,7 +59,6 @@ public final class DozeUtils {
     public static void onBootCompleted(Context context) {
         checkDozeService(context);
         restoreDozeModes(context);
-        enableScreenOffUdfpsByDefault(context);
     }
     public static void startService(Context context) {
         if (DEBUG)
@@ -85,20 +82,9 @@ public final class DozeUtils {
     }
 
     private static void restoreDozeModes(Context context) {
-        if (!isDozeAutoBrightnessEnabled(context)) {
+        if (isAlwaysOnEnabled(context) && !isDozeAutoBrightnessEnabled(context)) {
             setDozeMode(PreferenceManager.getDefaultSharedPreferences(context).getString(
-                    DOZE_BRIGHTNESS_KEY, String.valueOf(DOZE_MODE_HBM)));
-        }
-    }
-
-    private static void enableScreenOffUdfpsByDefault(Context context) {
-        try {
-            Settings.Secure.getIntForUser(context.getContentResolver(), SCREEN_OFF_UDFPS_ENABLED,
-                UserHandle.USER_CURRENT);
-        } catch (SettingNotFoundException e) {
-            Log.i(TAG, "Setting screen_off_udfps_enabled to 1 by default.");
-            Settings.Secure.putIntForUser(context.getContentResolver(), SCREEN_OFF_UDFPS_ENABLED,
-                1, UserHandle.USER_CURRENT);
+                    DOZE_BRIGHTNESS_KEY, String.valueOf(DOZE_BRIGHTNESS_LBM)));
         }
     }
 
@@ -135,7 +121,7 @@ public final class DozeUtils {
 
     protected static boolean isDozeAutoBrightnessEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(DOZE_BRIGHTNESS_KEY, DOZE_BRIGHTNESS_HBM)
+                .getString(DOZE_BRIGHTNESS_KEY, DOZE_BRIGHTNESS_LBM)
                 .equals(DOZE_BRIGHTNESS_AUTO);
     }
 

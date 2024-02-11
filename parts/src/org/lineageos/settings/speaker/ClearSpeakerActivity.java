@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- *               2017,2021-2022 The LineageOS Project
+ * Copyright (C) 2020 Paranoid Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +14,22 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.doze;
+package org.lineageos.settings.speaker;
 
 import android.os.Bundle;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.R;
 
-public class DozeSettingsActivity extends CollapsingToolbarBaseActivity {
-    private static final String TAG_DOZE = "doze";
+public class ClearSpeakerActivity extends CollapsingToolbarBaseActivity {
+
+    private static final String TAG_CLEARSPEAKER = "clearspeaker";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getFragmentManager().beginTransaction().replace(R.id.content_frame,
-                new DozeSettingsFragment(), TAG_DOZE).commit();
+                new ClearSpeakerFragment(), TAG_CLEARSPEAKER).commit();
     }
 }
