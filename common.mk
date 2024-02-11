@@ -390,6 +390,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+TARGET_HAS_UDFPS := true
+
 # Perf
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.perf@2.3.vendor
