@@ -2,7 +2,12 @@ allow hal_audio_default audio_socket:sock_file rw_file_perms;
 allow hal_audio_default sound_device:chr_file rw_file_perms;
 allow hal_audio_default vendor_persist_audio_file:file rw_file_perms;
 allow hal_audio_default sysfs:file { read };
+hal_client_domain(hal_audio_default, hal_dms)
 
 unix_socket_connect(hal_audio_default, property, hal_sensors_default)
+
+# Allow Audio hal to find hal_dms_hwservice
+binder_call(hal_audio_default, hal_dms_default)
+allow hal_audio_default hal_dms_hwservice:hwservice_manager find;
 
 set_prop(hal_audio_default, vendor_audio_prop)
