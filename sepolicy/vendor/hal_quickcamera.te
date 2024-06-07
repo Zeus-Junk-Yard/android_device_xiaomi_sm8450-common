@@ -11,3 +11,7 @@ binder_call(hal_quickcamera_client, hal_quickcamera_server)
 binder_call(hal_quickcamera_server, hal_quickcamera_client)
 
 add_hwservice(hal_quickcamera_server, hal_quickcamera_hwservice)
+
+neverallow { domain -hal_quickcamera_server -hal_camera_default } hal_quickcamera_hwservice:hwservice_manager add;
+allow priv_app hal_quickcamera_hwservice:hwservice_manager find;
+allow hal_quickcamera_server hal_quickcamera_hwservice:hwservice_manager { add find };
