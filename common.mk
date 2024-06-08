@@ -136,6 +136,7 @@ PRODUCT_PACKAGES_DEBUG += \
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.7.vendor:64 \
+		android.hardware.graphics.common-V4-ndk \
     camera.device@1.0-impl:64 \
     libcamera2ndk_vendor:64 \
     libexif.vendor:64 \
