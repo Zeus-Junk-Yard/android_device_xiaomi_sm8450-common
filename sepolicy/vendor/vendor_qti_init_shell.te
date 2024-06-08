@@ -1,3 +1,4 @@
 allow vendor_qti_init_shell vendor_sysfs_msm_perf:file w_file_perms;
+allow vendor_qti_init_shell proc_watermark_boost_factor:file { write };
 
 set_prop(vendor_qti_init_shell, vendor_panel_info_prop)
