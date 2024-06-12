@@ -269,6 +269,7 @@ PRODUCT_PACKAGES += \
     WifiResCommon
 
 PRODUCT_PACKAGES += \
+    DeviceAsWebcamResXiaomi \
     DialerResXiaomi \
     FrameworksResTarget \
     FrameworksResUdfpsSensor \
